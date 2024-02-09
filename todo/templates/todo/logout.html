@@ -1,0 +1,12 @@
+<h1>Logout</h1>
+
+<form method="GET" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <a href=""></a>
+
+    <button type="submit">Logout</button>
+</form>
+
+<!-- <a href="{% url 'logout' %}">Logout</a> -->
+
+<!-- <p>Don't have an account? <a href="">Register</a> </p> -->

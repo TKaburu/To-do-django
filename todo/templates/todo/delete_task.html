@@ -1,0 +1,14 @@
+<h3>Delete</h3>
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+    <p>Are you sure you want to delete {{ task }}?</p>
+    {{form}}
+    
+    <button type="submit">Yes</button>
+</form>
+
+<!-- <p>Are you sure you want to delete {{ task }}?</p>
+
+<button type="submit" value="">Yes</button> -->

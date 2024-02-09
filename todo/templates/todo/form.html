@@ -1,0 +1,10 @@
+<h3>Create Form</h3>
+
+<a href="{% url 'tasks' %}"> Home </a>
+
+<form method="POST" action="">
+    {{form.as_p}}
+    {% csrf_token %}
+
+    <button type="submit">Submit</button>
+</form>
