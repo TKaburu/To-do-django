@@ -9,6 +9,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.contrib import auth # to handle the auth classes
+from django.contrib import messages # tidisplay the message(s)
+from django.views.generic.base import RedirectView # to redirect the get method logout view
+
+
 # from django.views.decorators.http import require_POST
 # from django.utils.decorators import method_decorator
 
@@ -26,10 +31,21 @@ class LogIn(LoginView):
     
 
 
-class LogOut(LogoutView):
-    template_name = 'todo/logout.html'
-    fields = '__all__'
-    
+# class LogOut(LogoutView):
+#     template_name = 'todo/logout.html'
+#     fields = '__all__'
+
+
+class LogOut(RedirectView): # RedirectView provide the redirect for GET request-- this logout view is somehow a get request, not post
+    url = '/login' # this is the url where it'll redirect to
+
+    def get(self, request, *args, **kwargs):
+        """
+        Executes the get request of this LogOut view
+        """
+        auth.logout(request) # calls the auth model to logout
+        messages.success(request, 'You are now logged out') # displays the success message upon successful logout
+        return super(LogOut, self).get(request, *args, **kwargs) # calls this LogOut view with its parent class, RedirectView
 
 
 class TaskView(LoginRequiredMixin, ListView):
