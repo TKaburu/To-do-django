@@ -1,0 +1,9 @@
+The thing is, Django 4.1, with the default LogoutView, it stopped having the get method. It switched to post, which is more secure, and advisable. So, I realized, on this project, it still reference the GET method, such that, even overwriting the http_method_names attribute, and including GET, it still couldn't work.
+
+So, I searched on other ways to override that, and it seems to work now.
+
+I have also included other comments in other parts of the system, and hope to get to push, to the user or dev, can see.
+
+I hope this makes sense.
+
+Thanks.
